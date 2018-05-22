@@ -1,0 +1,456 @@
+html{
+  font-size: 12px; /* base size */
+
+}
+
+body {
+  text-align: left;
+/*  background-image: url(/Books/resources/images/books1.png);*/
+  background-repeat: repeat;
+  background-position: top left;
+  background-attachment: fixed;
+  background-color: #ccccd8
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #000044;
+  font-family: 'Arial Unicode MS', Arial, Verdana, sans-serif, Georgia, Helvetica, Geneva;
+  font-size: 1em;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: red;
+  padding: 1.0em 0em 1.0em 0em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+body > div {
+  max-width: 80em;
+  margin: 0 auto;
+  text-align: left;
+}
+
+body > div#adminWrapper {
+  background-color: rosybrown;
+  border-radius: 1em;
+}
+
+header, footer {
+  opacity: 0.75;
+  border-radius: 1em;
+  background-color: #000044;
+  padding: 1em;
+  text-align: center;
+  box-shadow: 0 0 1em white;
+}
+
+header {
+  margin: 2em auto 1em auto;
+}
+
+footer {
+  margin: 0.5em auto 1em auto;
+  color: white;
+}
+
+main {
+  opacity: 0.95;
+  border-radius: 1em;
+  background-color: #eeeef3;
+  margin-bottom: 1em;
+  box-shadow: 0.5em 0.5em 0.5em #004;
+}
+
+nav{
+  opacity: 0.85;
+  border-radius: 1em;
+  background-color: #ccccd8;
+  box-shadow: 0.5em 0.5em 0.5em #004;
+}
+
+@media screen and (min-width: 600px){
+  main {
+    width: 66.25%;
+    padding: 1.25%;
+  }
+
+  nav{
+    position: fixed;
+    top: 7.5em;
+  }
+}
+
+@media screen and (min-width: 960px){
+  main, nav {
+    min-height: 40em;
+  }
+
+  nav{
+    margin-left: 56em;
+    width: 22em;
+    padding: 1em;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 960px){
+  main, nav {
+    min-height: 45em;
+  }
+
+  nav{
+    margin-left: 70%;
+    width: 27.5%;
+    padding: 1.25%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  main {
+    width: 97.5%;
+    padding: 1.25%;
+  }
+
+  nav{
+    width: 97.5%;
+    padding: 1.25%;
+    bottom: 1em;
+  }
+}
+
+header > h1{
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  background: #000044;
+  margin-top: 10px
+}
+
+.inlineBlock{
+  display:inline-block;
+  margin-right: 0.5em;
+}
+
+.cloud1 {
+  font-size: 0.9em;
+}
+
+.cloud2 {
+  font-size: 0.95em;
+}
+
+.cloud3 {
+  font-size: 1.0em;
+}
+
+.cloud4 {
+  font-size: 1.05em;
+}
+
+.cloud5 {
+  font-size: 1.1em;
+}
+
+.cloud6 {
+  font-size: 1.15em;
+}
+
+.cloud7 {
+  font-size: 1.20em;
+}
+
+.cloud8 {
+  font-size: 1.25em;
+}
+
+.cloud9 {
+  font-size: 1.30em;
+}
+
+.cloud10 {
+  font-size: 1.35em;
+}
+
+#bookTable {
+  opacity: 0.95;
+  border-radius: 1em;
+  background-color: #eeeef3;
+  padding: 1em 1% 1em 1%;
+  margin-bottom: 1em;
+  box-shadow: 0.25em 0.25em 1em 0.75em #004;
+}
+
+.borderTable,
+.standardTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.borderTable {
+  border-left: #000044 solid 1px;
+  border-bottom: #000044 solid 1px;
+}
+
+.borderTable td, .borderTable th {
+  border-collapse: collapse;
+  border-top: #000044 solid 1px;
+  border-right: #000044 solid 1px;
+  padding: 0.5em;
+}
+
+.borderTable th,
+.standardTable th{
+  border-bottom: #000044 solid 2px;
+}
+
+.standardTable td {
+  border-collapse: collapse;
+  padding: 0.25em;
+}
+
+
+.smallButton, .lastbutton, .mediumButton{
+  border-radius: 0.5em;
+  background-color: #000044;
+  color: white;
+  display: inline-block;
+  text-align: center;
+}
+
+.smallButton, .lastbutton{
+  width: 5em;
+}
+
+.mediumButton{
+  width:45%;
+  max-width: 10em;
+  min-width: 8em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  margin-right: 0.5em;
+}
+
+.smallButton{
+  margin-right: 0.5em;
+}
+
+.smallButton:hover, .lastbutton:hover, .mediumButton:hover{
+  font-weight: bold;
+  color: red;
+}
+
+div#languages{
+  margin-bottom: 0.5em;
+}
+
+#languages,
+#search{
+  margin: 5px 0 25px 0;
+}
+
+.inputGroup {
+  margin-top: 0.5em;
+}
+
+.inputFull, .inputMedium, .inputHalf {
+  box-sizing: border-box; 
+  border:#000044 solid 1px;
+  margin-right: 0.5em;
+}
+
+.inputFull {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.inputHalf {
+  width: 50%;
+}
+
+.inputMedium {
+  width: 25em;
+}
+
+.smallHeight{
+  min-height: 2em;
+  height: 4em;
+}
+
+.bigHeight{
+  min-height: 4em;
+  height: 40em;
+}
+
+.label{
+  display: inline-block;
+  font-weight: bold;
+  width: 20em;
+}
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+nav a {
+  color: #000044;
+}
+a:hover{
+  color: red;
+}
+
+.button{
+  width: 47.5%;
+  min-width: 9em;
+  max-width: 11em;
+  border-radius: 0.5em;
+  background-color: #000044;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin-top: 1em;
+  margin-right: 1.25%;
+}
+
+.button:hover{
+  font-weight: bold;
+  color: red;
+}
+
+p {
+  margin: 5px 0 5px 0;
+}
+
+p > a,
+td > a,
+th > a{
+  color: #000044;
+}
+
+main div.tab {
+  display: block;
+}
+
+main ul.tab {
+  list-style-type: none;
+  display: inline-block;
+}
+
+main li.tab,
+main li.activetab {
+  list-style-type: none;
+  display: inline-block;
+  border-style: solid;
+  border-width: 2px 2px 1px 2px;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  background-color: #ccccd8;
+  height: 2em;
+  margin-right: -0.3em;
+}
+
+main li.tab {
+  border-color:  #cccccc #aaaaaa #aaaaaa #cccccc;
+}
+
+main li.activetab {
+  border-color:  #cccccc #aaaaaa #ccccd8 #cccccc;
+}
+
+main li.tab a,
+main li.activetab a {
+  padding: 0 0.5em 0 0.5em;
+  font-size: 1.2em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main li.activetab a {
+  color: #000044;
+}
+
+.editor {
+  background-color: #ccccd8;
+  border-radius: 0.5em;
+  border-top-left-radius: 0;
+  padding: 1em;
+}
+
+.medium {
+  width: 25em;
+}
+
+.wide {
+  width: 100%;
+}
+
+.row1 {
+  background-color: #dddddd;
+}
+
+.row2 {
+  background-color: #eeeeee;
+}
+
+.colIcon{
+  width:1.5em;
+}
+
+.colSmall{
+  width:5em;
+}
+
+.colHeader{
+  width: 15%;
+}
+.colAuto {}
+
+.colImage,
+.col25 {
+  width: 25%;
+}
+
+.col50{
+  width: 50%;
+}
+.list-header {
+  font-weight: bold;
+}
+
+
+.warning {
+  margin-left: 1em;
+  color: red;
+}
+
+#reviews ul li {
+    margin-left: 2em;
+}
+
+#third td {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 32%;
+}

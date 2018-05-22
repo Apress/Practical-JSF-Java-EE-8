@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="editTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:define name="editContent">
+
+    <h:form>
+      <div id="content">
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="title" value="#{msg.lblTitle}"/>
+          <h:inputText id="title" styleClass="inputFull" value="#{bookEditor.book.title}">
+            <f:ajax render="@this msgTtitle"/>
+          </h:inputText>
+          <h:message id="msgTtitle" for="title" styleClass="warning"/>
+        </div>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="subTitle" value="#{msg.lblSubtitle}"/>
+          <h:inputText id="subTitle" styleClass="inputFull" value="#{bookEditor.book.subTitle}">
+            <f:ajax render="@this msgSubTtitle"/>
+          </h:inputText>
+          <h:message id="msgSubTtitle" for="subTitle" styleClass="warning"/>
+        </div>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="author" value="#{msg.lblAuthor}"/>
+          <h:inputText id="author" styleClass="inputFull" value="#{bookEditor.book.author}"/>
+        </div>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="publisher" value="#{msg.lblPublisher}"/>
+          <h:inputText id="publisher" styleClass="inputFull" value="#{bookEditor.book.publisher}"/>
+        </div>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="year" value="#{msg.lblYear}"/>
+          <h:inputText id="year" styleClass="inputFull" value="#{bookEditor.book.year}"/>
+        </div>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="language" value="#{msg.lblLanguage}"/>
+          <h:selectOneRadio styleClass="standardTable" id="language" value="#{bookEditor.book.language}">
+            <f:selectItems value="#{bookEditor.languages.topics}" var="lang" itemLabel="#{lang.title}" itemValue="#{lang.key}"/>
+          </h:selectOneRadio>
+        </div>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="isbn" value="#{msg.lblISBN}"/>
+          <h:inputText id="isbn" styleClass="inputFull" value="#{bookEditor.book.isbn}"/>
+        </div>
+
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="shorttext" value="#{msg.lblShortText}"/>
+          <div>
+            <ul class="tab">
+              <c:forEach items="#{bookEditor.languages.topics}" var="lang">
+                <li class="#{bookEditor.languages.isActive(lang)? 'activetab' : 'tab'}">
+                <h:commandLink value="#{lang.title}"
+                               action="#{bookEditor.changeShortText(lang.key)}" immediate="true">
+                  <f:param name="langCode" value="#{lang.key}"/>
+                  <f:ajax render="shorttext"/>
+                </h:commandLink>
+                </li>
+              </c:forEach>
+            </ul>
+
+            <h:inputTextarea id="shorttext" styleClass="inputFull smallHeight" value="#{bookEditor.localShortText}"/>
+          </div>
+        </div>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="reference" value="#{msg.lblReference}"/>
+          <h:inputText id="reference" styleClass="inputFull" value="#{bookEditor.book.reference}"/>
+        </div>
+
+        <div class="inputGroup" id="third">
+          <h:outputLabel styleClass="label" for="categories" value="#{msg.lblCategory}"/>
+          <h:selectManyCheckbox styleClass="half" id="categories"  layout="lineDirection"
+                                value="#{bookEditor.book.categories}">
+            <f:converter converterId="CategoryConverter"/>
+            <f:selectItems value="#{categoryConverter.categories}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}"/>
+          </h:selectManyCheckbox>
+        </div>
+
+        <h:outputLabel styleClass="label" for="tblReviewLinks" value="#{msg.lblLinks}"/>
+        <h:dataTable styleClass="standardTable" headerClass="list-header" id="tblReviewLinks" rendered="#{bookEditor.book.reviewLinks.size() > 0}"
+                     value="#{bookEditor.book.reviewLinks}" var="review" width="100%" rowClasses="row1, row2" columnClasses="colSmall, colAuto">
+          <h:column id="colLang">
+            <h:selectOneMenu value="#{review.language}" >
+              <f:selectItems value="#{bookEditor.languages.topics}" var="lang" itemLabel="#{lang.title}" itemValue="#{lang.key}"/>
+              <f:ajax render="tblReviewLinks"/>
+            </h:selectOneMenu>
+          </h:column>
+          <h:column id="colURL">
+            <h:inputText value="#{review.url}" styleClass="inputFull" valueChangeListener="#{bookEditor.changeReviewLink}">
+              <f:ajax render="tblReviewLinks"/>
+            </h:inputText>
+          </h:column>
+
+        </h:dataTable>
+        <div class="inputGroup">
+          <h:outputLabel styleClass="label" for="adReference" value="#{msg.lblAdReference}"/>
+          <h:inputText id="adReference" styleClass="inputFull" value="#{bookEditor.book.adReference}"/>
+        </div>
+
+        <div class="inputGroup">
+          <h:commandLink styleClass="smallButton" action="#{bookEditor.save}" value="#{msg.btnSave}"/>
+        </div>
+      </div>
+    </h:form>
+
+  </ui:define>
+
+</ui:composition>

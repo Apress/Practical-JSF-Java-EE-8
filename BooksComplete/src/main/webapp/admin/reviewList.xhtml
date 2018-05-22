@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="#{sessionTools.template}"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+  <ui:define name="content">
+    <div id="content">
+      <h1>#{msg.btnReviews}</h1>
+      <p>#{msg.txtReviews}</p>
+      <h:form>
+
+        <h:dataTable styleClass="standardTable" headerClass="list-header" id="tblBooks"
+                     value="#{reviewListController.reviews}" var="review" width="100%" rowClasses="row1, row2" columnClasses="colTitle, colPublisher, colYear">
+          <h:column id="colTitle">
+            <f:facet name="header">
+              <h:link value="#{msg.lblTitle}" outcome="#{sessionTools.pages.AdminReviewList}?field=title"/>
+            </f:facet>
+            <h:link outcome="#{sessionTools.pages.AdminBookEditor}" value="#{review.title}">
+              <f:param name="bookId" value="#{review.bookId}"/>
+            </h:link>
+          </h:column>
+
+          <h:column id="colLanguage">
+            <f:facet name="header">
+              <h:link value="#{msg.lblLanguage}" outcome="#{sessionTools.pages.AdminReviewList}?field=language"/>
+            </f:facet>
+            <h:link outcome="#{sessionTools.pages.AdminBookEditor}" value="#{review.language}">
+              <f:param name="bookId" value="#{review.bookId}"/>
+            </h:link>
+          </h:column>
+
+          <h:column id="colLocation">
+            <f:facet name="header">
+              <h:link value="#{msg.lblLocation}" outcome="#{sessionTools.pages.AdminReviewList}?field=location"/>
+            </f:facet>
+            <h:link outcome="#{sessionTools.pages.AdminBookEditor}" value="it-rezension.de">
+              <f:param name="bookId" value="#{review.bookId}"/>
+            </h:link>
+          </h:column>
+        </h:dataTable>
+
+      </h:form>
+    </div>
+
+  </ui:define>
+
+</ui:composition>

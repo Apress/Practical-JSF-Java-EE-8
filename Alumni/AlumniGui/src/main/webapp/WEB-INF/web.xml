@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" 
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+  
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Production</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.faces.ENABLE_WEBSOCKET_ENDPOINT</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  
+  <session-config>
+    <session-timeout>
+      30
+    </session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>public/login.xhtml</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <error-code>501</error-code>
+    <location>/error.xhtml</location>
+  </error-page>
+
+  <security-constraint>
+    <display-name>member access</display-name>
+    <web-resource-collection>
+      <web-resource-name>member</web-resource-name>
+      <description>member access</description>
+      <url-pattern>/member/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Member pages are available to all roles</description>
+      <role-name>member</role-name>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <display-name>admin access</display-name>
+    <web-resource-collection>
+      <web-resource-name>admin</web-resource-name>
+      <description>admin access</description>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Admin pages are restricted to people of the admin role only</description>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-role>
+    <description/>
+    <role-name>member</role-name>
+  </security-role>
+  <security-role>
+    <description/>
+    <role-name>admin</role-name>
+  </security-role>
+
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>alumniRealm</realm-name>
+    <form-login-config>
+      <form-login-page>/public/login.xhtml</form-login-page>
+      <form-error-page>/public/loginError.xhtml</form-error-page>
+    </form-login-config>
+  </login-config>
+
+</web-app>

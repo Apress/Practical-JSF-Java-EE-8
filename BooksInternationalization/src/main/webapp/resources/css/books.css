@@ -1,0 +1,189 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  color: #000044;
+}
+
+body {
+  font-size: 12px; /* base size */
+  text-align: left;
+  font-family: Verdana, "Verdana CE",
+    Arial, "Arial CE", "Lucida Grande CE",
+    lucida, "Helvetica CE", sans-serif;
+  background-image: url(/Books/resources/images/books1.png);
+  background-repeat: repeat;
+  background-position: top left;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: red;
+  padding: 1.0em 0em 1.0em 0em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+body > div {
+  width: 80em;
+  margin: 0 auto;
+  text-align: left;
+}
+
+body > div#adminWrapper {
+  background-color: rosybrown;
+  border-radius: 1em;
+}
+
+header, footer {
+  opacity: 0.75;
+  border-radius: 1em;
+  background-color: #000044;
+  padding: 1em;
+  text-align: center;
+  box-shadow: 0 0 1em white;
+}
+
+header {
+  margin: 2em auto 1em auto;
+}
+
+footer {
+  margin: 0.5em auto 1em auto;
+  color: white;
+}
+
+header > h1{
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover{
+  color: red;
+}
+
+main {
+  min-height: 40em;
+  width: 53em;
+  opacity: 0.95;
+  border-radius: 1em;
+  background-color: #eeeef3;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-shadow: 0.5em 0.5em 0.5em #004
+}
+
+nav{
+  min-height: 40em;
+  position: fixed;
+  margin-left: 56em;
+  width: 22em;
+  padding: 1em;
+  top: 7.5em;
+  opacity: 0.85;
+  border-radius: 1em;
+  background-color: #ccccd8;
+  box-shadow: 0.5em 0.5em 0.5em #004
+}
+
+.button{
+  width: 10em;
+  border-radius: 0.5em;
+  background-color: #000044;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin-top: 1em;
+  margin-right: 1em;
+}
+
+.button:hover{
+  font-weight: bold;
+  color: red;
+}
+
+p {
+  margin: 5px 0 5px 0;
+}
+
+p > a {
+  color: blue;
+}
+
+main div.tab {
+  display: block;
+}
+
+main ul.tab {
+  list-style-type: none;
+  display: inline;
+}
+
+main li.tab,
+main li.activetab {
+  list-style-type: none;
+  display: inline;
+  border-style: solid;
+  border-width: 2px 2px 1px 2px;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  background-color: #ccccd8;
+}
+
+main li.tab {
+  border-color:  #cccccc #aaaaaa #aaaaaa #cccccc;
+}
+
+main li.activetab {
+  border-color:  #cccccc #aaaaaa #ccccd8 #cccccc;
+}
+
+main li.tab a,
+main li.activetab a {
+  padding: 0 0.5em 0 0.5em;
+  font-size: 1.2em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main li.activetab a {
+  color: #000044;
+}
+
+.editor {
+  background-color: #ccccd8;
+  border-radius: 0.5em;
+  border-top-left-radius: 0;
+  padding: 1em;
+}
+
+.medium {
+  width: 25em;
+}
+
+.wide {
+  width: 100%;
+}
+
+.colIcon {
+  width: 20px;
+}
+
+colAuto {}

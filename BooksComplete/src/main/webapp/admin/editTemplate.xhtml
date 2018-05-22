@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+  <ui:define name="content">
+    <f:metadata>
+      <f:viewParam name="lang" value="#{editBook.info}"/>
+    </f:metadata>
+
+    <h1>Edit Book</h1>
+
+    <h:form id="form">
+      <div class="tab">
+        <ul class="tab">
+          <c:forEach items="#{bookEditor.topics.topics}" var="topic">
+            <li class="#{bookEditor.topics.isActive(topic)? 'activetab' : 'tab'}">
+            <h:commandLink value="#{topic.image.length() gt 0 ? '' : topic.title}"
+                           action="#{bookEditor.changeTab(topic.key)}" immediate="true">
+              <h:graphicImage rendered="#{topic.image.length() gt 0}"
+                              alt="#{topic.image}" name="#{topic.image}"
+                              library="images" title="Review" value=""/>
+              <f:param name="langCode" value="#{topic.info}"/>
+              <!--f:param name="cid" value="# {javax.enterprise.context.conversation.id}"/-->
+            </h:commandLink>
+            </li>
+          </c:forEach>
+        </ul>
+      </div>
+    </h:form>
+    <div class="editor">
+      <ui:insert name="editContent">Content</ui:insert>
+    </div>
+  </ui:define>
+
+</ui:composition>

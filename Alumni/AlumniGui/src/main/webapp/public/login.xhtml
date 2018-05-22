@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                template="/common/alumniTemplate.xhtml"
+                xmlns:mm="http://xmlns.jcp.org/jsf/composite/components"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:define name="content">
+    <f:metadata>
+      <f:importConstants type="de.muellerbruehl.alumni.gui.enums.Page"/>
+    </f:metadata>
+    <ui:debug hotkey="1"/>
+
+    <div class="container">
+
+      <h:form id="login">
+
+        <h1>#{msg.welcomeAlumniHead}</h1>
+        <h2>#{msg.welcomeAlumniTeaser}</h2>
+
+        <h3 class="form-signin-heading">Login to Alumni</h3>
+
+
+        <mm:LabeledText id="loginName"
+                        label="#{msg.lblLoginName}" 
+                        value="#{login.loginName}"
+                        textStyleClass="inputHalf"
+                        placeholder="#{msg.lblLoginName}" 
+                        autofocus="true"/>
+        <mm:LabeledSecret id="loginPassword"
+                          label="#{msg.lblPassword}" 
+                          value="#{login.password}"
+                          placeholder="#{msg.lblPassword}" 
+                          redisplay="true"
+                          textStyleClass="inputHalf"/>
+
+
+        <div class="buttonBar">
+          <h:commandButton value="#{msg.btnLogin}" 
+                           action="#{login.login}" 
+                           styleClass="button"
+                           immediate="true">
+          </h:commandButton>
+        </div>
+
+        <div>
+          #{msg.lblForgotPassword} 
+          <h:link value="#{msg.lblRequestPassword}" 
+                  outcome="#{Page.RequestPassword.url()}"/>
+        </div>
+
+
+        <h2 style="margin-top: 2em;">
+          #{msg.lblNotRegistered} 
+        </h2>
+
+        <h3>Register for Alumni</h3>
+
+
+        <mm:LabeledText label="#{msg.lblFirstName}" 
+                        value="#{register.account.firstName}"
+                        textStyleClass="inputHalf"/>
+
+        <mm:LabeledText label="#{msg.lblLastName}" 
+                        value="#{register.account.lastName}"
+                        textStyleClass="inputHalf"/>
+
+        <mm:LabeledText label="#{msg.lblLoginName}" 
+                        value="#{register.account.loginName}"
+                        textStyleClass="inputHalf"/>
+
+        <mm:LabeledText id="email" label="#{msg.lblEmail}" 
+                        value="#{register.account.email}"
+                        textStyleClass="inputHalf">
+          <f:validator validatorId="EmailValidator" for="email"/>
+        </mm:LabeledText>
+
+        <mm:LabeledSecret id="password"
+                          label="#{msg.lblPassword}" 
+                          value="#{register.password}"
+                          redisplay="true"
+                          textStyleClass="inputHalf"/>
+
+
+        <mm:LabeledSecretValidate label="#{msg.lblRepeatPassword}" 
+                                  value="#{register.account.password}"
+                                  redisplay="true"
+                                  validationMethod="#{register.checkPassword}"
+                                  textStyleClass="inputHalf">
+        </mm:LabeledSecretValidate>
+
+        <div class="buttonBar">
+          <h:commandButton value="#{msg.btnRegister}" 
+                           action="#{register.register}" 
+                           styleClass="button"
+                           immediate="true">
+          </h:commandButton>
+        </div>
+
+      </h:form>
+
+    </div>
+
+  </ui:define>
+</ui:composition>
+
+

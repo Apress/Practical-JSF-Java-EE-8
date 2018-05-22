@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./booksTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+  <ui:define name="content">
+    <div id="content">
+      <h:form>
+        <h1>
+          <h:outputText value="#{reviewPresenter.review.book.title}"/>
+        </h1>
+        (<h:outputText value="#{reviewPresenter.review.creationDate}">
+          <f:convertDateTime pattern="yyyy-MM-dd"/>
+        </h:outputText>)
+        <br/>
+        <br/>
+        <ui:repeat value="#{reviewPresenter.review.text.replace('\\r', '').split('\\n')}" var="text">
+          <p>
+            <h:outputText value="#{text}"/>
+          </p>
+        </ui:repeat>
+        <br/>
+        <table id="book"  class="borderTable" cellspacing="0" cellpadding="0">
+          <colgroup> <col width="100" /> <col width="*" /> <col width="150" /></colgroup>
+          <tbody>
+            <tr>
+              <td>#{msg.lblTitle}</td>
+              <td>
+                <h2>#{reviewPresenter.review.book.title}</h2>
+              </td>
+              <td style="text-align: center;" rowspan="6">
+                <h:outputText value="#{sessionTools.getAdInfo(reviewPresenter.review.book.adReference, reviewPresenter.review.book.isbn)}" escape="false"/>
+              </td>
+            </tr>
+            <tr>
+              <td>#{msg.lblSubtitle}</td>
+              <td>#{reviewPresenter.review.book.subTitle}</td>
+            </tr>
+            <tr>
+              <td>#{msg.lblAuthor}</td>
+              <td>#{reviewPresenter.review.book.author}</td>
+            </tr>
+            <tr>
+              <td>#{msg.lblPublisher}, #{msg.lblYear}</td>
+              <td>#{reviewPresenter.review.book.publisher}, #{reviewPresenter.review.book.year}</td>
+            </tr>
+            <tr>
+              <td>#{msg.lblLanguage}</td>
+              <td>#{sessionTools.getDisplayLanguage(reviewPresenter.review.book.language)}</td>
+            </tr>
+            <tr>
+              <td>#{msg.lblISBN}</td>
+              <td>#{reviewPresenter.review.book.isbn}</td>
+            </tr>
+          </tbody>
+        </table>
+      </h:form>
+    </div>
+    <script type="text/javascript" src="http://wms.assoc-amazon.de/20070822/DE/js/link-enhancer-common.js?tag=michsblog-21">
+    </script>
+    <noscript>
+      <img src="http://wms.assoc-amazon.de/20070822/DE/img/noscript.gif?tag=michsblog-21" alt="" />
+    </noscript>
+
+
+  </ui:define>
+
+</ui:composition>

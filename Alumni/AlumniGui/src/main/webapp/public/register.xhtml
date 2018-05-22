@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/common/alumniTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:mm="http://xmlns.jcp.org/jsf/composite/components"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:define name="content">
+    <h:form>
+      <h1>Register for Alumni</h1>
+
+     
+      <mm:LabeledText label="#{msg.lblFirstName}" 
+                      value="#{register.account.firstName}"
+                      textStyleClass="inputHalf"/>
+
+      <mm:LabeledText label="#{msg.lblLastName}" 
+                      value="#{register.account.lastName}"
+                      textStyleClass="inputHalf"/>
+
+      <mm:LabeledText label="#{msg.lblLoginName}" 
+                      value="#{register.account.loginName}"
+                      textStyleClass="inputHalf"/>
+
+      <mm:LabeledText id="email" label="#{msg.lblEmail}" 
+                      value="#{register.account.email}"
+                      textStyleClass="inputHalf">
+        <f:validator validatorId="EmailValidator" for="email"/>
+      </mm:LabeledText>
+
+      <mm:LabeledSecret id="password1"
+                        label="#{msg.lblPassword}" 
+                        value="#{register.password}"
+                        redisplay="true"
+                        textStyleClass="inputHalf"/>
+
+
+      <div class="inputPart">
+        <h:outputLabel for="repeatPassword" 
+                       value="#{msg.lblRepeatPassword}" 
+                       styleClass="label"/>
+        <h:message id="msgRepeatPassword" 
+                   for="repeatPassword" 
+                   styleClass="errorMessage"/>
+        <h:inputSecret id="repeatPassword" 
+                       value="#{register.account.password}" 
+                       styleClass="inputFull"
+                       validator="#{register.checkPassword}">
+          <f:ajax event="blur" execute="@this password" render="msgRepeatPassword"/>
+        </h:inputSecret>
+      </div>
+
+      
+        <mm:LabeledSecret label="#{msg.lblRepeatPassword}" 
+                          value="#{register.account.password}"
+                          validationMethod="#{register.checkPassword}"
+                          textStyleClass="inputHalf">
+        </mm:LabeledSecret>
+
+      <div class="buttonBar">
+        <h:commandButton value="#{msg.btnRegister}" 
+                         action="#{register.register}" 
+                         styleClass="button"
+                         immediate="false">
+        </h:commandButton>
+      </div>
+
+    </h:form>
+  </ui:define>
+</ui:composition>

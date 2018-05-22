@@ -1,0 +1,15 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}**************************************************************************
+${licensePrefix}This software is created by Michael M??ller.
+${licensePrefix}(c) all rights reserved.
+${licensePrefix}
+${licensePrefix}This software is delivered as is, without any warranty.
+${licensePrefix}It is free for personal, non-commercial usage.
+${licensePrefix}For any other usage, please contact the author.
+${licensePrefix}michael.mueller@mueller-bruehl.de
+${licensePrefix}**************************************************************************
+<#if licenseLast??>
+${licenseLast}
+</#if>

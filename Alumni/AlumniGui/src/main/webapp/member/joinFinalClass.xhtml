@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/common/memberTemplate.xhtml"
+                xmlns:mc="http://de.muellerbruehl/components"
+                xmlns:mm="http://xmlns.jcp.org/jsf/composite/components"
+                xmlns:pf="http://primefaces.org/ui"
+                xmlns:p="http://xmlns.jcp.org/jsf/"
+
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:define name="userContent">
+    <h2>Join final class</h2>
+
+    <h:form id="finalYear">
+      <h:outputLabel value="#{msg.lblCountry}" styleClass="label"/>
+      <h:selectOneMenu value="#{finalClass.address.countryCode}"
+                       hideNoSelectionOption="true">
+        <f:selectItem noSelectionOption="true" itemValue="#{''}" itemLabel="#{msg.lblChooseEntry}"/>
+        <f:selectItems value="#{finalClass.countries}" 
+                       var="country" 
+                       itemValue="#{country.countryCode}" 
+                       itemLabel="#{country.name}"
+                       />
+        <f:ajax/>
+      </h:selectOneMenu>
+
+      <ui:remove>
+        <pf:autoComplete dropdown="true" 
+                         value="#{finalClass.address.countryCode}" 
+                         completeMethod="#{finalClass.completeCountry}" 
+                         var="country"
+                         itemLabel="#{country.name}"
+                         itemValue="#{country.countryCode}"
+                         >
+          <pf:ajax event="itemSelect" listener="#{finalClass.handleSelect}"/>
+        </pf:autoComplete>    
+      </ui:remove>
+
+      <mm:LabeledText label="#{msg.lblPostalCode}"
+                      value="#{finalClass.address.postalCode}"
+                      renderElement="finalYear:collegeName"
+                      />
+
+      <mm:LabeledText label="#{msg.lblTown}"
+                      value="#{finalClass.address.town}"
+                      />
+
+      <mm:LabeledText label="#{msg.lblStreet}"
+                      value="#{finalClass.address.street}"
+                      />
+
+      <pf:autoComplete dropdown="true" 
+                       value="#{finalClass.name}" 
+                       completeMethod="#{finalClass.collegesByPostalCode}" 
+                       var="college" 
+                       itemValue="#{college.name}" 
+                       itemLabel="#{college.name}"
+                       >
+      </pf:autoComplete>    
+
+      <div jsf:id="collegeName">
+        <h:outputLabel value="#{msg.lblName}" styleClass="label"/>
+        <h:selectOneMenu value="#{finalClass.name}"
+                         hideNoSelectionOption="true">
+          <f:selectItem noSelectionOption="true" itemValue="#{''}" itemLabel="#{msg.lblChooseEntry}"/>
+          <f:selectItems value="#{finalClass.collegesByPostalCode}" 
+                         var="college" 
+                         itemValue="#{college.name}" 
+                         itemLabel="#{college.name}"
+                         />
+          <f:ajax/>
+        </h:selectOneMenu>
+      </div>
+
+      <mm:LabeledText label="#{msg.lblName}"
+                      value="#{finalClass.name}"
+                      />
+
+
+    </h:form>
+  </ui:define>
+</ui:composition>

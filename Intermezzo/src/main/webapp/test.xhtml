@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+  <h:head>
+    <title>Test</title>
+  </h:head>
+  <h:body>
+    <h:form id="form">
+      forEach
+      <br/>
+      <c:forEach items="#{controller.friends}" var="friend">
+        <div>
+          <h:outputText value="#{friend.name}"/>
+        </div>
+      </c:forEach>
+      <br/>
+      <c:forEach items="#{controller.friends}" var="friend">
+        <c:if test="#{friend.name.length() > 0}">
+          <div>
+            <h:outputText value="#{friend.name}"/>
+          </div>
+        </c:if>
+      </c:forEach>
+      <hr/>
+      repeat
+      <br/>
+      <ui:repeat value="#{controller.friends}" var="friend">
+        <div>
+          <h:outputText value="#{friend.name}"/>
+        </div>
+      </ui:repeat>
+      <br/>
+      <ui:repeat value="#{controller.friends}" var="friend">
+        <div jsf:rendered="#{friend.name.length() > 0}">
+          <h:outputText value="#{friend.name}"/>
+        </div>
+      </ui:repeat>
+      <br/>
+      <ui:repeat value="#{controller.friends}" var="friend">
+        <h:panelGroup rendered="#{friend.name.length() > 0}" layout="block">
+          <h:outputText value="#{friend.name}"/>
+        </h:panelGroup>
+      </ui:repeat>
+      <hr/>
+      Observe the component tree by clicking this button: 
+      <h:commandButton value="Print" action="#{util.printTree}"/>
+
+      Or press Ctrl-Shift-1
+      <ui:debug hotkey="1"/>
+    </h:form>
+  </h:body>
+</html>
+

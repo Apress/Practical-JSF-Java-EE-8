@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/common/memberTemplate.xhtml"
+                xmlns:mm="http://de.muellerbruehl/components"
+                >
+
+  <ui:define name="userContent">
+    <h:outputScript name="script/Chat.js"/>
+
+    <h:form prependId="false">
+      <h1>#{classroomController.userDisplayName} @ #{classroomController.classroom}</h1>
+      <h2>#{userController.roles}</h2>
+
+      <hr/>
+      <h2>Classroom chat</h2>
+
+      <div>
+        Enter message: 
+        <h:inputTextarea style="height: 1em;"  
+                         onkeypress="if (event.keyCode === 13) {
+                               acceptValue(this);
+                             }
+                         "/>
+      </div>
+      <h:inputTextarea id="messages" 
+                       style="width: 100%; min-height: 10em;"/>
+      <script>
+        invokeConnection();
+      </script>
+    </h:form>
+  </ui:define>
+</ui:composition>

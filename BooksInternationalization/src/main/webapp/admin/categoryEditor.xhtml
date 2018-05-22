@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="categoryTemplate.xhtml">
+
+  <ui:define name="editContent">
+
+    <h:form>
+      <h:dataTable value="#{categoryEditor.categories}"
+                   var="cat"
+                   styleClass="wide"
+                   columnClasses="colIcon colAuto">
+        <h:column>
+          <h:commandLink action="#{categoryEditor.deleteCategory(cat)}">
+            <h:graphicImage alt="delete"
+                            name="Delete.png"
+                            library="icon/small"
+                            title="delete"/>
+          </h:commandLink>
+        </h:column>
+        <h:column>
+          <h:inputText styleClass="wide" value="#{cat.name}"/>
+        </h:column>
+      </h:dataTable>
+      <h:commandLink styleClass="button"
+                     value="Add category"
+                     action="#{categoryEditor.addCategory}"/>
+      <h:commandButton styleClass="button"
+                       value="Save"
+                       action="#{categoryEditor.save}"/>
+    </h:form>
+  </ui:define>>
+</ui:composition>
+

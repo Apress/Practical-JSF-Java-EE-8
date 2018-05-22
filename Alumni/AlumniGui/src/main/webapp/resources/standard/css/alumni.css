@@ -1,0 +1,95 @@
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 16px;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  margin-top: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #bdf;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+.form-signin {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.inputFull, .inputMedium, .inputHalf {
+  box-sizing: border-box; 
+  border:#000044 solid 1px;
+  margin-right: 0.5em;
+}
+
+.inputFull {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.inputHalf {
+  width: 50%;
+}
+
+.inputMedium {
+  width: 25em;
+}
+
+.smallHeight{
+  min-height: 2em;
+  height: 4em;
+}
+
+.bigHeight{
+  min-height: 4em;
+  height: 40em;
+}
+
+.label{
+  display: inline-block;
+  font-weight: bold;
+  width: 10em;
+}
+

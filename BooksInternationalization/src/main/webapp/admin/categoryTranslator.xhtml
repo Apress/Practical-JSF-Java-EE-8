@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="categoryTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+  <ui:define name="editContent">
+    <h:form>
+      <h:dataTable value="#{categoryEditor.categories}"
+                   var="cat"
+                   styleClass="wide">
+        <h:column>
+          <h:outputText styleClass="wide" value="#{cat.name}"/>
+        </h:column>
+        <h:column>
+          <h:inputText styleClass="wide"
+                       value="#{cat.categoryTranslations[param.langCode].name}"/>
+        </h:column>
+      </h:dataTable>
+
+      <!--
+            <table class="wide">
+              <tbody>
+                <c:forEach items="# {categoryEditor.categories}" var="cat" varStatus="status">
+                  <tr>
+                    <td>
+                      <h:outputText styleClass="wide" value="# {cat.name}"/>
+                    </td>
+                    <td>
+                      <h:inputText styleClass="wide"
+                                   value="# {cat.categoryTranslations[param.langCode].name}"/>
+                    </td>
+                  </tr>
+                </c:forEach>
+              </tbody>
+            </table>
+      -->
+      <h:commandButton styleClass="button"
+                       value="Save"
+                       action="#{categoryEditor.save}">
+        <f:param name="langCode" value="#{param.langCode}"/>
+      </h:commandButton>
+    </h:form>
+  </ui:define>>
+</ui:composition>
+

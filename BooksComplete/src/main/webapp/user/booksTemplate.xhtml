@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html [<!ENTITY copy "&#169;">]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+  <f:view locale="#{sessionTools.language}">
+    <h:head>
+      <ui:debug hotkey="1"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <h:outputStylesheet name="muellerbruehl/css/books.css"/>
+      <title>Michael's book list</title>
+      <f:metadata>
+        <f:event type="preRenderView" listener="#{sessionTools.preRenderView('User')}"/>
+      </f:metadata>
+    </h:head>
+
+    <h:body>
+      <div id="wrapper">
+        <header>
+          <h1>Michael's book list</h1>
+        </header>
+        <main>
+          <ui:insert name="content">Here the content goes</ui:insert>
+        </main>
+        <nav>
+          <ui:include src="/common/commonNav.xhtml"/>
+          <div id="tagCloud">
+            <ui:repeat value="#{categoryEditor.categories}" var="category">
+              <h:link styleClass="inlineBlock cloud#{category.quantityClass}" value="#{category.name}"
+                      rendered="#{category.quantity > 0}"
+                      title="#{category.name} (#{category.quantity})" outcome="/user/bookPresenter.xhtml?categoryId=#{category.id}"/>
+            </ui:repeat>
+          </div>
+          <br/>
+          <br/>
+          <div id="reviews">
+            <p>
+              #{msg.txtLastReviews}
+            </p>
+            <p>
+              <ul>
+                <br/>
+                <ui:repeat value="#{reviewListController.recentReviews}" var="review">
+                  <li>
+                    <h:link value="#{review.book.title} [#{review.book.publisher}, #{review.book.year}]" 
+                            outcome="/user/review.xhtml?bookId=#{review.bookId}&amp;language=#{review.language}"/>
+                  </li>
+                </ui:repeat>
+              </ul>
+            </p>
+          </div>
+
+        </nav>
+        <footer>
+          <ui:include src="/common/footer.xhtml"/>
+        </footer>
+      </div>
+    </h:body>
+  </f:view>
+</html>
+

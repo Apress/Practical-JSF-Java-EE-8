@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/common/adminTemplate.xhtml"
+                xmlns:mm="http://de.muellerbruehl/components"
+                >
+
+  <ui:define name="userContent">
+    <h2>Admin Tasks</h2>
+
+    <f:websocket channel="events" onmessage="eventListener" />
+
+    <script type="text/javascript">
+      //<![CDATA[
+      function eventListener(message, channel, event) {
+        var element = document.getElementById("activity");
+        element.innerHTML = message;
+      }
+      //]]>
+    </script>
+
+    <h1>
+      <h:outputLabel value="Last activity: "/>
+      <h:outputText id="activity" value=""/>
+    </h1>
+
+  </ui:define>
+</ui:composition>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/common/alumniTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:mm="http://xmlns.jcp.org/jsf/composite/components"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:define name="content">
+<h:form>
+
+  <div class="inputPart">
+    <h:outputLabel for="firstName" 
+                   value="#{msg.lblFirstName}" 
+                   styleClass="label"/>
+    <h:message id="msgFirstName" for="firstName" 
+               styleClass="errorMessage"/>
+    <h:inputText id="firstName" 
+                 value="#{register.account.firstName}" 
+                 styleClass="inputFull"/>
+  </div>
+
+  <div class="inputPart">
+    <h:outputLabel for="lastName" 
+                   value="#{msg.lblLastName}" 
+                   styleClass="label"/>
+    <h:message id="msgLastName" 
+               for="lastName" 
+               styleClass="errorMessage"/>
+    <h:inputText id="lastName" 
+                 value="#{register.account.lastName}" 
+                 styleClass="inputFull"/>
+  </div>
+
+  <div class="inputPart">
+    <h:outputLabel for="loginName" 
+                   value="#{msg.lblLoginName}" 
+                   styleClass="label"/>
+    <h:message id="msgLoginName" 
+               for="loginName" 
+               styleClass="errorMessage"/>
+    <h:inputText id="loginName" 
+                 value="#{register.account.loginName}" 
+                 styleClass="inputFull"/>
+  </div>
+
+  <div class="inputPart">
+    <h:outputLabel for="email" 
+                   value="#{msg.lblEmail}" 
+                   styleClass="label"/>
+    <h:message id="msgEmail" 
+               for="email" 
+               styleClass="errorMessage"/>
+    <h:inputText id="email" 
+                 value="#{register.account.email}" 
+                 styleClass="inputFull"/>
+  </div>
+
+  <div class="inputPart">
+    <h:outputLabel for="password" 
+                   value="#{msg.lblPassword}" 
+                   styleClass="label"/>
+    <h:message id="msgPassword" 
+               for="password" 
+               styleClass="errorMessage"/>
+    <h:inputSecret id="password" 
+                   styleClass="inputFull"/>
+  </div>
+
+  <div class="inputPart">
+    <h:outputLabel for="repeatPassword" 
+                   value="#{msg.lblRepeatPassword}" 
+                   styleClass="label"/>
+    <h:message id="msgRepeatPassword" 
+               for="repeatPassword" 
+               styleClass="errorMessage"/>
+    <h:inputSecret id="repeatPassword" 
+                   value="#{register.password}" 
+                   styleClass="inputFull"/>
+  </div>
+
+  <div class="buttonBar">
+    <h:commandButton value="#{msg.btnRegister}" 
+                     action="#{register.register()}" 
+                     styleClass="button"/>
+  </div>
+
+</h:form>
+  </ui:define>
+</ui:composition>

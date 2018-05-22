@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/common/alumniTemplate.xhtml"
+                xmlns:mm="http://de.muellerbruehl/components"
+                >
+
+  <ui:define name="metadata">
+    <ui:insert name="contentmetadata"/>
+  </ui:define>
+
+  <ui:define name="content">
+    <ui:include src="/common/memberMenu.xhtml"/>
+
+    <div class="container">
+      <ui:insert name="userContent">Here the content goes</ui:insert>
+    </div>
+
+  </ui:define>
+</ui:composition>
+

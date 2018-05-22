@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>TinyCalculator</title>
+    </head>
+    <body>
+        <h1>TinyCalculator</h1>
+        <form jsf:id="calc">
+            <div>
+                Param1: <input type="text" jsf:value="#{tinyCalculator.param1}"/>
+            </div>
+            <div>
+                Param2: <input type="text" jsf:value="#{tinyCalculator.param2}"/>
+            </div>
+            <div>
+                <input type="submit" value="Add" 
+                       jsf:action="#{tinyCalculator.add}"/>
+                <input type="submit" value="Subtract" 
+                       jsf:action="#{tinyCalculator.subtract}"/>
+                <!-- or, using the button element: -->
+                <button jsf:action="#{tinyCalculator.multiply()}">Multiply</button>
+                <button jsf:action="#{tinyCalculator.divide()}">Divide</button>
+            </div>
+            <div>
+                Result: #{tinyCalculator.result}
+            </div>
+
+            <hr/>
+            <button jsf:action="index.xhtml">JSF Tag version</button>
+
+            <hr/>
+            Observe the component tree by clicking this button: 
+            <button jsf:action="#{util.printTree}">Print</button>
+
+            Or press Alt-Shift-t
+            <ui:debug hotkey="t"/>
+
+        </form>
+    </body>
+</html>

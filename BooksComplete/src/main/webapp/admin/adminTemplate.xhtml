@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html [<!ENTITY copy "&#169;">]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <f:view locale="#{sessionTools.language}">
+
+    <h:head>
+      <ui:debug hotkey="1"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <h:outputStylesheet name="muellerbruehl/css/books.css"/>
+      <title>Michael's book list</title>
+      <f:metadata>
+        <f:event type="preRenderView" listener="#{sessionTools.preRenderView('Admin')}"/>
+      </f:metadata>
+    </h:head>
+
+    <h:body>
+      <div id="adminWrapper">
+        <header>
+          <h1>Michael's book list - administer pages</h1>
+        </header>
+        <main>
+          <ui:insert name="content">Here the content goes</ui:insert>
+        </main>
+        <nav>
+          <ui:include src="/common/commonNav.xhtml"/>
+
+          <div>
+            <h:link styleClass="button"
+                    value="#{msg.lblCategory}"
+                    outcome="#{sessionTools.pages.AdminCategoryEditor}"/>
+            <h:link styleClass="button"
+                    value="#{msg.btnNewBook}"
+                    outcome="#{sessionTools.pages.AdminBookEditor}"/>
+          </div>
+        </nav>
+        <footer>
+          <ui:include src="/common/footer.xhtml"/>
+        </footer>
+      </div>
+    </h:body>
+  </f:view>
+</html>
+
